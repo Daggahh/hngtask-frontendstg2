@@ -86,68 +86,68 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
   };
 
   return (
-    <main className="w-full bg-[#041E23] flex flex-col p-[24px] lg:flex lg:flex-col gap-y-8 justify-center items-start mx-auto max-w-[700px] border rounded-[32px] border-[#0E464F] lg:p-[48px]">
-      <div className="items-start w-full gap-y-3">
-        <div className="flex flex-col items-start mb-4 gap-y-3 lg:gap-y-0 md:justify-between md:flex-row">
-          <h1 className="text-[32px] text-white font-normal lg:text-[32px] leading-[36px] font-quaternary">
+    <main className="flex flex-col justify-center items-start w-full p-[24px] max-w-[700px] mx-auto bg-[#041E23] border border-[#0E464F] rounded-[32px] lg:flex lg:flex-col gap-y-8 lg:p-[48px]">
+      <div className="w-full items-start gap-y-3">
+        <div className="flex flex-col items-start md:flex-row md:justify-between mb-4 gap-y-3 lg:gap-y-0">
+          <h1 className="text-[32px] font-normal leading-normal shadow-sm text-white font-quaternary lg:text-[32px]">
             Ticket Selection
           </h1>
-          <p className="text-base font-primary text-[#FAFAFA] leading-6">
+          <p className="text-base leading-[150%] font-primary text-[#FAFAFA]">
             Step 1/3
           </p>
         </div>
-        <div className="relative h-1 rounded bg-[#0E464F]">
+        <div className="relative h-1 bg-[#0E464F] rounded">
           <div
-            className={`absolute inset-y-0 left-0 rounded bg-[#24A0B5] transition-all duration-700 ease-in-out ${progress}`}
+            className={`absolute left-0 inset-y-0 rounded bg-[#24A0B5] transition-all duration-700 ease-in-out ${progress}`}
           ></div>
         </div>
       </div>
-      <div className="sm:p-[18px] sm:border flex sm:bg-[#08252B] flex-col sm:border-[#0E464F] w-full sm:rounded-[32px] gap-y-8">
+      <div className="flex flex-col gap-y-8 w-full sm:p-[18px] sm:border sm:border-[#0E464F] sm:bg-[#08252B] sm:rounded-[32px]">
         <div
-          className="sm:p-6 sm:space-y-2 text-center rounded-[24px] px-6 py-4 relative bg-opacity-10 backdrop-blur-md border-[2px] border-t-0 border-[#07373F]"
+          className="relative flex flex-col gap-y-2 p-6 text-center rounded-[24px] bg-opacity-10 backdrop-blur-md border-[2px] border-t-0 border-[#07373F] sm:p-6 sm:space-y-2"
           style={{
             background:
               "radial-gradient(57.42% 106.59% at 14.02% 32.06%, #24a0b533, #24a0b500), #0a0c111a",
           }}
         >
-          <div className="flex flex-col gap-y-2 mb-[40px] sm:mb-0">
-            <h2 className="text-[#FFFFFF] leading-[100%] text-[48px] h-fit sm:text-[62px] font-secondary">
+          <div className="mb-[40px] flex flex-col gap-y-2 sm:mb-0">
+            <h2 className="text-[48px] h-fit leading-[150%] text-[#FFFFFF] sm:text-[62px] font-secondary">
               Techember Fest &apos;25
             </h2>
-            <p className="text-[#FAFAFA] w-[239px] lg:w-[340px] text-center mx-auto lg:text-[16px] text-[14px] leading-[21px] font-primary">
+            <p className="w-[239px] lg:w-[340px] mx-auto text-center text-[14px] lg:text-[16px] text-[#FAFAFA] leading-[150%] font-primary">
               Join us for an unforgettable experience at{" "}
               <span className="font-secondary">Techember Fest</span>! Secure
               your spot now.
             </p>
             <div className="flex flex-col gap-y-1 lg:flex-row lg:items-center lg:justify-center lg:gap-x-4">
-              <span className="text-base lg:text-lg font-primary leading-[24px] text-[#FAFAFA]">
+              <span className="text-base lg:text-lg font-primary leading-[150%] text-[#FAFAFA]">
                 📍 [Event Location]
               </span>
               <span className="hidden lg:block">| |</span>
-              <p className="text-base text-[#FAFAFA] font-primary leading-[24px] ">
+              <p className="text-base font-primary leading-[150%] text-[#FAFAFA]">
                 March 15, 2025 | 7:00 PM
               </p>
             </div>
           </div>
         </div>
-        <hr className="h-1 border-t-0 bg-[#07373F]" />
+        <hr className="h-1 bg-[#07373F] border-t-0" />
         <div className="flex flex-col gap-y-2">
-          <h3 className="text-[#FAFAFA] text-base font-primary leading-[150%] font-normal">
+          <h3 className="text-base font-primary font-normal leading-[150%] text-[#FAFAFA]">
             Select Ticket Type:
           </h3>
-          <div className="p-4 rounded-[24px] flex flex-col md:flex-row md:justify-between w-full md:gap-x-6 gap-y-6 border border-[#07373F] bg-[#052228]">
+          <div className="flex flex-col w-full gap-y-6 p-4 border border-[#07373F] rounded-[24px] bg-[#052228] md:flex-row md:justify-between md:gap-x-6">
             {ticketTypes.map(({ price, label, image }, index) => {
               const isSelected = selectedTicket === label;
               return (
                 <div
                   key={index}
                   onClick={() => handleTicketSelect(label)}
-                  className={`flex flex-col w-full rounded-[12px] p-3 gap-y-3 items-start transition-colors cursor-pointer border ${
+                  className={`flex flex-col w-full h-full p-3 gap-y-3 items-start rounded-[12px] transition-colors cursor-pointer border min-w-[158px] ${
                     isSelected ? "bg-[#12464E]" : "bg-transparent"
-                  } hover:bg-[#2C545B] border-[#197686] min-w-[158px] h-full`}
+                  } hover:bg-[#2C545B] border-[#197686]`}
                 >
-                  <div className="flex flex-row justify-between items-center w-full">
-                    <div className="font-primary text-[24px] font-semibold text-white">
+                  <div className="flex justify-between items-center w-full">
+                    <div className="text-[24px] font-semibold text-white font-primary">
                       {price}
                     </div>
                     <Image
@@ -156,7 +156,7 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
                       className="w-10 h-10 object-contain"
                     />
                   </div>
-                  <h4 className="text-[#fafafa] text-base font-primary">
+                  <h4 className="text-base text-[#FAFAFA] font-primary">
                     {label}
                   </h4>
                   <p className="text-[14px] font-primary text-[#FAFAFA]">
@@ -176,28 +176,28 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
             <button
               aria-expanded={dropdownOpen}
               aria-haspopup="listbox"
-              className="w-full flex justify-between border border-[#07373F] items-center p-3 rounded-[12px] bg-transparent hover:bg-[#197686]"
               onClick={() => {
                 setDropdownOpen(!dropdownOpen);
                 setIconRotated(!iconRotated);
               }}
+              className="flex justify-between items-center w-full p-3 border border-[#07373F] rounded-[12px] bg-transparent hover:bg-[#197686]"
             >
               <span>{ticketCount}</span>
               <Image
                 src={chevrondown}
                 alt="chevrondown"
-                className={`text-white w-6 h-6 transition-transform ${
+                className={`w-6 h-6 text-white transition-transform ${
                   iconRotated ? "rotate-180" : ""
                 }`}
               />
             </button>
             {dropdownOpen && (
-              <div className="absolute left-0 mt-2 w-full bg-opacity-10 backdrop-blur-md border border-[#07373F] rounded-[12px] p-2 z-50">
+              <div className="absolute left-0 w-full p-2 mt-2 bg-opacity-10 backdrop-blur-md border border-[#07373F] rounded-[12px] z-50">
                 {[1, 2, 3, 4, 5].map((count) => (
                   <div
                     key={count}
                     onClick={() => handleTicketCount(count)}
-                    className="p-2 text-white text-center cursor-pointer hover:bg-[#197686] rounded-md transition"
+                    className="p-2 text-center text-white cursor-pointer hover:bg-[#197686] rounded-md transition"
                   >
                     {count}
                   </div>
@@ -207,12 +207,12 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
           </div>
         </div>
 
-        <div className="flex flex-col lg:items-center lg:gap-x-6 lg:flex-row gap-y-4">
-          <button className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-[#24A0B5] font-quaternary border-[#24A0B5] text-[16px] leading-[24px]">
+        <div className="flex flex-col gap-y-4 lg:flex-row lg:items-center lg:gap-x-6">
+          <button className="cancel-btn w-full py-3 px-6 text-[16px] text-center text-[#24A0B5] font-quaternary border border-[#24A0B5] rounded-[8px] transition-colors">
             Cancel
           </button>
           <button
-            className="next-btn w-full order-0 text-[16px] lg:order-2 py-3 px-6 text-white transition-colors text-center font-quaternary rounded-[8px] bg-[#24A0B5]"
+            className="next-btn w-full py-3 px-6 text-[16px] text-white text-center font-quaternary rounded-[8px] bg-[#24A0B5] transition-colors"
             type="button"
             onClick={handleNext}
           >
@@ -234,6 +234,7 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [specialRequest, setSpecialRequest] = useState<string>("");
+  const [dragging, setDragging] = useState(false);
 
   const isValidEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
 
@@ -242,7 +243,7 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
   };
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement> | { target: { files: File[] } }
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -272,6 +273,26 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
       toast.error("Image upload failed. Please try again.");
     } finally {
       setUploading(false);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragging(false);
+
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      const event = { target: { files: [file] } };
+      handleFileChange(event);
     }
   };
 
@@ -341,13 +362,19 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
           ></div>
         </div>
       </div>
+
       <form
         className="lg:p-8 w-full lg:border flex lg:bg-[#08252B] flex-col lg:border-[#0E464F] lg:rounded-[32px] gap-y-8"
         onSubmit={handleSubmit}
       >
         {/* Profile Photo Upload */}
         <div
-          className="rounded-[24px] border border-[#07373F] bg-[#052228] px-6 pt-6 pb-12 flex flex-col items-start gap-y-8 cursor-pointer"
+          className={`rounded-[24px] border border-[#07373F] bg-[#052228] px-6 pt-6 pb-12 flex flex-col items-start gap-y-8 cursor-pointer ${
+            dragging ? "border-4 border-dashed border-[#24A0B5]" : ""
+          }`}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
           role="presentation"
           tabIndex={0}
           onClick={() => document.getElementById("fileUpload")?.click()}
@@ -363,31 +390,18 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
             className="opacity-0"
             onChange={handleFileChange}
             hidden
-            style={{
-              border: "0px",
-              clip: "rect(0px, 0px, 0px, 0px)",
-              clipPath: "inset(50%)",
-              height: "1px",
-              margin: "0px -1px -1px 0px",
-              overflow: "hidden",
-              padding: "0px",
-              position: "absolute",
-              width: "1px",
-              whiteSpace: "nowrap",
-            }}
           />
-          <div className=" lg:bg-[#000000] lg:bg-opacity-20 w-full h-[200px] flex items-center justify-center">
-            <div className="group relative mx-auto flex justify-center items-center w-[240px] h-[240px] overflow-hidden aspect-square rounded-[32px] border-[4px] border-[#24A0B5] bg-[#0E464F] border-opacity-50 ">
+          <div className="lg:bg-[#000000] lg:bg-opacity-20 w-full h-[200px] flex items-center justify-center">
+            <div className="group relative mx-auto flex justify-center items-center w-[240px] h-[240px] overflow-hidden aspect-square rounded-[32px] border-[4px] border-[#24A0B5] bg-[#0E464F] border-opacity-50">
               {uploading ? (
                 <Loader />
               ) : imageUrl ? (
                 <>
-                  <Image
+                  <img
                     src={imageUrl}
                     alt="Uploaded Avatar"
                     className="w-full h-full object-cover rounded-[32px]"
                   />
-                  {/* Overlay: Shown on hover */}
                   <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <CloudUploadOutlined className="text-white text-4xl" />
                     <span className="text-center font-primary text-[#fafafa]">
@@ -464,7 +478,7 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
         <div className="flex flex-col lg:items-center lg:gap-x-6 lg:flex-row gap-y-4">
           <button
             type="button"
-            className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-quaternary text-[#24A0B5] border-[#24A0B5] text-[16px] leading-[24px]"
+            className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-quaternary text-[#24A0B5] border-[#24A0B5] text-[16px] leading-[150%]"
             onClick={prevStep}
           >
             Back
@@ -596,7 +610,7 @@ const StepThree: React.FC<
               </div>
             </div>
             <div className="relative overflow-hidden flex items-center justify-center w-[140px] aspect-square rounded-[12px] mx-auto border-[4px] border-[#24A0B5] shadow-xl">
-              <Image
+              <img
                 src={ticketDetails.imageUrl}
                 alt="user-img-upload"
                 className="absolute inset-0 object-cover w-full h-full"
@@ -653,7 +667,7 @@ const StepThree: React.FC<
             </div>
           </div>
         </div>
-        <div className="relative md:mt-[79px] mt-[72px] flex items-center justify-center">
+        <div className="relative md:mt-[60px] mt-[72px] flex items-center justify-center">
           <Image
             src={barcode}
             alt="barcode"
@@ -663,7 +677,7 @@ const StepThree: React.FC<
       </div>
       <div className="flex flex-col w-full mt-6 lg:items-center lg:gap-x-6 lg:flex-row gap-y-4">
         <button
-          className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-quaternary text-[#24A0B5] border-[#24A0B5]  text-[16px] leading-[24px]"
+          className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-quaternary text-[#24A0B5] border-[#24A0B5]  text-[16px] leading-[150%]"
           onClick={handleDownload}
         >
           Download Ticket
@@ -743,10 +757,7 @@ const Form: React.FC = () => {
         <StepTwo prevStep={prevStep} nextStep={nextStep} progress={progress} />
       )}
       {step === 3 && (
-        <StepThree
-          progress={progress}
-          handleBookAnother={handleBookAnother}
-        />
+        <StepThree progress={progress} handleBookAnother={handleBookAnother} />
       )}
     </>
   );
