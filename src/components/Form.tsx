@@ -564,7 +564,7 @@ const StepThree: React.FC<
   };
 
   return (
-    <main className="w-full bg-[#08252B] flex flex-col mt- p-[24px] lg:flex lg:flex-col gap-y-8 justify-center items-start mx-auto max-w-[700px] border rounded-[32px] border-[#0E464F]  lg:p-[48px]">
+    <main className="w-full bg-[#08252B] flex flex-col p-[24px] lg:flex lg:flex-col gap-y-8 justify-center items-start mx-auto max-w-[700px] border rounded-[32px] border-[#0E464F]  lg:p-[48px]">
       <div className="items-start w-full gap-y-3">
         <div className="flex items-center mb-4 gap-y-3 lg:gap-y-0 justify-between flex-row">
           <h1 className="text-2xl font-normal lg:text-[32px] font-quaternary">
