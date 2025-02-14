@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Jeju+Myeongjo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alatsi&family=Road+Rage&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+  --background: #02191d;
+  --foreground: rgba(255, 255, 255, 0.87);
+
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Road Rage", cursive;
+  --font-tertiary: "Alatsi", sans-serif;
+  --font-quaternary: "Jeju Myeongjo", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--font-primary);
+  color: var(--foreground);
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.event-booking-wrap {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+  background: radial-gradient(52.52% 32.71% at 50% 97.66%, #24a0b533, #24a0b500),
+    #02191d;
+}
+
+.event-booking-container {
+  transform: translateY(0) !important;
+  margin-top: 86px !important;
+  padding: 48px 20px 60px;
+  display: block;
+  z-index: 2;
+  position: relative;
+  max-width: 100%;
+}
+
+@media (max-width: 400px) {
+  .event-booking-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .event-booking-container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  html,
+  body {
+    font-size: 14px !important;
+  }
+
+  .event-booking-container {
+    max-width: calc(100% - 25px);
+  }
+}
+
+@media (min-width: 992px) {
+  .event-booking-container {
+    max-width: calc(100% - 25px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .event-booking-container {
+    max-width: 1180px;
+  }
+}
+
+@media (max-width: 1440px) and (max-height: 800px) {
+  html,
+  body {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 1280px) and (max-height: 698px) {
+  .event-booking-container {
+    max-width: 991px;
+  }
+}
+
+@media (max-width: 1440px) and (max-height: 798px) {
+  html,
+  body {
+    font-size: 15px !important;
+  }
+}
