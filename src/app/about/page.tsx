@@ -144,25 +144,20 @@ const AboutPage = () => {
       </div>
 
       <div className="flex flex-col w-full mt-6 lg:items-center lg:gap-x-6 lg:flex-row gap-y-4 border border-solid border-[#0E464F] bg-[#041E23] rounded-2xl py-4 px-12">
-        <button className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-quaternary text-[#24A0B5] border-[#24A0B5]  text-[16px] leading-[24px]">
-          <a
-            target="_blank"
-            href="https://www.figma.com/community/file/1470800949188681164/event-ticket-booking-ui-open-source-practice-project"
-          >
-            Design File
-          </a>
-        </button>
-        <button
-          className="next-btn w-full order-0 text-[16px] lg:order-2 py-3 px-6 text-white transition-colors text-center font-quaternary rounded-[8px] bg-[#24A0B5] "
-          type="button"
+        <a
+          target="_blank"
+          href="https://www.figma.com/community/file/1470800949188681164/event-ticket-booking-ui-open-source-practice-project"
+          className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-quaternary text-[#24A0B5] border-[#24A0B5]  text-[16px] leading-[24px]"
         >
-          <a
-            target="_blank"
-            href="https://github.com/Daggahh/hngtask-frontendstg2.git"
-          >
-            Github code
-          </a>
-        </button>
+          Design File
+        </a>
+        <a
+          target="_blank"
+          href="https://github.com/Daggahh/hngtask-frontendstg2.git"
+          className="next-btn w-full order-0 text-[16px] lg:order-2 py-3 px-6 text-white transition-colors text-center font-quaternary rounded-[8px] bg-[#24A0B5]"
+        >
+          Github code
+        </a>
       </div>
     </main>
   );

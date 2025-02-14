@@ -39,30 +39,11 @@ export default function Navbar() {
           <NavLinks pathname={pathname} />
         </div>
 
-        <button className="animated-button hidden lg:flex lg:py-3 lg:px-9 py-3 px-4  lg:text-base text-sm">
-          <svg
-            viewBox="0 0 24 24"
-            className="arr-2"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-          </svg>
-          <span className="text uppercase">My Tickets</span>
-          <span className="circle"></span>
-          <svg
-            viewBox="0 0 24 24"
-            className="arr-1"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-          </svg>
-        </button>
-
-        <div className="lg:hidden flex flex-row gap-2 items-center">
-          <button className="animated-button flex py-3 px-4 text-sm">
+        <Link href="/my-tickets">
+          <button className="animated-button hidden lg:flex lg:py-3 lg:px-9 py-3 px-4  lg:text-base text-sm">
             <svg
               viewBox="0 0 24 24"
-              className="arr-2 -me-[14px]"
+              className="arr-2"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -71,12 +52,36 @@ export default function Navbar() {
             <span className="circle"></span>
             <svg
               viewBox="0 0 24 24"
-              className="arr-1 -me-[14px]"
+              className="arr-1"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
             </svg>
           </button>
+        </Link>
+
+        <div className="lg:hidden flex flex-row gap-2 items-center">
+          <Link
+            href="/my-tickets"
+            className="animated-button flex items-center justify-center w-[136.31px] h-[44px] p-[12px_16px] text-sm"
+            >
+            <svg
+              viewBox="0 0 24 24"
+              className="arr-2 -me-[14px] w=[11.31px] h-auto"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span className="text uppercase mt-[3px]">My Tickets</span>
+            <span className="circle"></span>
+            <svg
+              viewBox="0 0 24 24"
+              className="arr-1 -me-[6px] w=[11.31px] h-auto"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+          </Link>
           <div className="lg:hidden">
             {isOpen ? (
               <CgClose

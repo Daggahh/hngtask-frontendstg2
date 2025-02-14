@@ -62,7 +62,7 @@
   position: relative;
   align-items: center;
   gap: 4px;
-  border: 4px solid;
+  border: 1px solid;
   border-color: transparent;
   background-color: #fff;
   border-radius: 12px;
@@ -78,7 +78,7 @@
 
 .animated-button svg {
   position: absolute;
-  width: 24px;
+  width: 20px;
   fill: #142124;
   z-index: 9;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -99,7 +99,7 @@
   transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
-  background-color: #197686;
+  background-color: #24a0b5;
   border-radius: 50%;
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -116,7 +116,7 @@
   box-shadow: 0 0 0 12px transparent;
   color: #fff;
   border-radius: 12px;
-  border-color: #142124;
+  border: 1px solid #d9d9d9;
 }
 
 .animated-button:hover .arr-1 {
@@ -125,6 +125,8 @@
 
 .animated-button:hover .arr-2 {
   left: 16px;
+  transform: rotate(-45deg);
+  transform-origin: center;
 }
 
 .animated-button:hover .text {
@@ -138,6 +140,7 @@
 .animated-button:active {
   scale: 0.95;
   box-shadow: 0 0 0 4px #197686;
+  border: 1px solid #d9d9d9;
 }
 
 .animated-button:hover .circle {

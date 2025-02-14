@@ -103,7 +103,7 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
           ></div>
         </div>
       </div>
-      <div className="sm:p-8 sm:border flex sm:bg-[#08252B] flex-col sm:border-[#0E464F] w-full sm:rounded-[32px] gap-y-8">
+      <div className="sm:p-[18px] sm:border flex sm:bg-[#08252B] flex-col sm:border-[#0E464F] w-full sm:rounded-[32px] gap-y-8">
         <div
           className="sm:p-6 sm:space-y-2 text-center rounded-[24px] px-6 py-4 relative bg-opacity-10 backdrop-blur-md border-[2px] border-t-0 border-[#07373F]"
           style={{
