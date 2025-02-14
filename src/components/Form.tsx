@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import regImage from "@/assets/images/Property1Reg.svg";
 import vipImage from "@/assets/images/Property1VIP.svg";
@@ -113,7 +112,7 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
         >
           <div className="flex flex-col gap-y-2 mb-[40px] sm:mb-0">
             <h2 className="text-[#FFFFFF] leading-[100%] text-[48px] h-fit sm:text-[62px] font-secondary">
-              Techember Fest '25
+              Techember Fest &apos;25
             </h2>
             <p className="text-[#FAFAFA] w-[239px] lg:w-[340px] text-center mx-auto lg:text-[16px] text-[14px] leading-[21px] font-primary">
               Join us for an unforgettable experience at{" "}
@@ -383,7 +382,7 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
                 <Loader />
               ) : imageUrl ? (
                 <>
-                  <img
+                  <Image
                     src={imageUrl}
                     alt="Uploaded Avatar"
                     className="w-full h-full object-cover rounded-[32px]"
@@ -484,7 +483,7 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
 
 const StepThree: React.FC<
   StepProps & { progress: string; handleBookAnother: () => void }
-> = ({ prevStep, progress, handleBookAnother }) => {
+> = ({ progress, handleBookAnother }) => {
   const [ticketDetails, setTicketDetails] = useState({
     name: "",
     email: "",
@@ -597,7 +596,7 @@ const StepThree: React.FC<
               </div>
             </div>
             <div className="relative overflow-hidden flex items-center justify-center w-[140px] aspect-square rounded-[12px] mx-auto border-[4px] border-[#24A0B5] shadow-xl">
-              <img
+              <Image
                 src={ticketDetails.imageUrl}
                 alt="user-img-upload"
                 className="absolute inset-0 object-cover w-full h-full"
@@ -745,7 +744,6 @@ const Form: React.FC = () => {
       )}
       {step === 3 && (
         <StepThree
-          prevStep={prevStep}
           progress={progress}
           handleBookAnother={handleBookAnother}
         />
