@@ -366,6 +366,7 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
       <form
         className="lg:p-8 w-full lg:border flex lg:bg-[#08252B] flex-col lg:border-[#0E464F] lg:rounded-[32px] gap-y-8"
         onSubmit={handleSubmit}
+        noValidate
       >
         {/* Profile Photo Upload */}
         <div
