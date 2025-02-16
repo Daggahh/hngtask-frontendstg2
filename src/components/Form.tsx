@@ -241,6 +241,18 @@ const StepTwo: React.FC<
   const [email, setEmail] = useState<string>("");
   const [specialRequest, setSpecialRequest] = useState<string>("");
   const [dragging, setDragging] = useState(false);
+  const [selectedTicket, setSelectedTicket] = useState<string>("Free");
+
+  useEffect(() => {
+    const storedTicket = localStorage.getItem("ticketType");
+    if (storedTicket) {
+      if (storedTicket.includes("VIP")) {
+        setSelectedTicket(storedTicket.split(" ")[0]);
+      } else {
+        setSelectedTicket("Free");
+      }
+    }
+  }, []);
 
   const isValidEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
 
@@ -499,7 +511,7 @@ const StepTwo: React.FC<
             type="submit"
             className="next-btn w-full order-0 text-[16px] lg:order-2 py-3 px-6 text-white transition-colors text-center font-quaternary rounded-[8px] bg-[#24A0B5]"
           >
-            Get My Free Ticket
+            Get My {selectedTicket} Ticket
           </button>
         </div>
       </motion.form>
@@ -741,8 +753,31 @@ const Form: React.FC = () => {
   }, []);
 
   const handleBookAnother = () => {
-    localStorage.clear();
+    const previousBookings = JSON.parse(
+      localStorage.getItem("bookings") || "[]"
+    );
+
+    const currentBooking = {
+      ticketType: localStorage.getItem("ticketType") || "Free",
+      ticketQuantity: localStorage.getItem("ticketQuantity") || 1,
+      imageUrl: localStorage.getItem("imageUrl") || "",
+      name: localStorage.getItem("name") || "",
+      email: localStorage.getItem("email") || "",
+      specialRequest: localStorage.getItem("specialRequest") || "",
+    };
+
+    previousBookings.push(currentBooking);
+
+    localStorage.setItem("bookings", JSON.stringify(previousBookings));
+
+    localStorage.removeItem("ticketType");
+    localStorage.removeItem("ticketQuantity");
+    localStorage.removeItem("imageUrl");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("specialRequest");
     localStorage.setItem("currentStep", "1");
+
     setStep(1);
     setDirection(-1);
   };
