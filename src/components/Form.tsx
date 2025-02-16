@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { slideVariants } from "@/utils/animationVariants";
 import regImage from "@/assets/images/Property1Reg.svg";
 import vipImage from "@/assets/images/Property1VIP.svg";
 import vvipImage from "@/assets/images/Property1VVIP.svg";
@@ -28,10 +30,9 @@ const ticketTypes = [
   { price: "$150", label: "VVIP ACCESS", image: vvipImage },
 ];
 
-const StepOne: React.FC<StepProps & { progress: string }> = ({
-  nextStep,
-  progress,
-}) => {
+const StepOne: React.FC<
+  StepProps & { progress: string; direction: number }
+> = ({ nextStep, progress, direction }) => {
   const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
   const [ticketCount, setTicketCount] = useState<number>(1);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -102,7 +103,14 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
           ></div>
         </div>
       </div>
-      <div className="flex flex-col gap-y-8 w-full sm:p-[18px] sm:border sm:border-[#0E464F] sm:bg-[#08252B] sm:rounded-[32px]">
+      <motion.div
+        variants={slideVariants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        custom={direction}
+        className="flex flex-col gap-y-8 w-full sm:p-[18px] sm:border sm:border-[#0E464F] sm:bg-[#08252B] sm:rounded-[32px]"
+      >
         <div
           className="relative flex flex-col gap-y-2 p-6 text-center rounded-[24px] bg-opacity-10 backdrop-blur-md border-[2px] border-t-0 border-[#07373F] sm:p-6 sm:space-y-2"
           style={{
@@ -219,16 +227,14 @@ const StepOne: React.FC<StepProps & { progress: string }> = ({
             Next
           </button>
         </div>
-      </div>
+      </motion.div>
     </main>
   );
 };
 
-const StepTwo: React.FC<StepProps & { progress: string }> = ({
-  nextStep,
-  prevStep,
-  progress,
-}) => {
+const StepTwo: React.FC<
+  StepProps & { progress: string; direction: number }
+> = ({ nextStep, prevStep, progress, direction }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
@@ -363,9 +369,15 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
         </div>
       </div>
 
-      <form
+      <motion.form
+        variants={slideVariants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        custom={direction}
         className="lg:p-8 w-full lg:border flex lg:bg-[#08252B] flex-col lg:border-[#0E464F] lg:rounded-[32px] gap-y-8"
         onSubmit={handleSubmit}
+        noValidate
       >
         {/* Profile Photo Upload */}
         <div
@@ -490,14 +502,18 @@ const StepTwo: React.FC<StepProps & { progress: string }> = ({
             Get My Free Ticket
           </button>
         </div>
-      </form>
+      </motion.form>
     </main>
   );
 };
 
 const StepThree: React.FC<
-  StepProps & { progress: string; handleBookAnother: () => void }
-> = ({ progress, handleBookAnother }) => {
+  StepProps & {
+    progress: string;
+    direction: number;
+    handleBookAnother: () => void;
+  }
+> = ({ progress, direction, handleBookAnother }) => {
   const [ticketDetails, setTicketDetails] = useState({
     name: "",
     email: "",
@@ -580,7 +596,14 @@ const StepThree: React.FC<
           ></div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center mx-auto gap-y-4">
+      <motion.div
+        variants={slideVariants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        custom={direction}
+        className="flex flex-col items-center justify-center mx-auto gap-y-4"
+      >
         <p className="text-2xl leading-[140%] font-primary text-center font-bold lg:font-normal text-white lg:font-tertiary lg:text-[32px]">
           Your Ticket is Booked!
         </p>
@@ -591,8 +614,16 @@ const StepThree: React.FC<
         <p className="lg:hidden text-base leading-[150%] text-[#fafafa] text-center font-normal font-primary">
           You can download or Check your email for a copy
         </p>
-      </div>
-      <div ref={ticketRef} className="relative w-full h-full pt-[21px] pb-8 ">
+      </motion.div>
+      <motion.div
+        ref={ticketRef}
+        variants={slideVariants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        custom={direction}
+        className="relative w-full h-full pt-[21px] pb-8 "
+      >
         <Image
           src={ticket}
           alt="ticket"
@@ -674,7 +705,7 @@ const StepThree: React.FC<
             className="absolute -translate-x-1/2  left-1/2"
           />
         </div>
-      </div>
+      </motion.div>
       <div className="flex flex-col w-full mt-6 lg:items-center lg:gap-x-6 lg:flex-row gap-y-4">
         <button
           className="cancel-btn w-full order-2 lg:order-0 py-3 px-6 transition-colors border rounded-[8px] text-center text-quaternary text-[#24A0B5] border-[#24A0B5]  text-[16px] leading-[150%]"
@@ -697,6 +728,7 @@ const StepThree: React.FC<
 const Form: React.FC = () => {
   const [step, setStep] = useState<number>(1);
   const [progress, setProgress] = useState("w-1/3");
+  const [direction, setDirection] = useState(1);
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -712,9 +744,11 @@ const Form: React.FC = () => {
     localStorage.clear();
     localStorage.setItem("currentStep", "1");
     setStep(1);
+    setDirection(-1);
   };
 
   const nextStep = () => {
+    setDirection(1);
     setStep((prev) => {
       const newStep = prev + 1;
       if (typeof window !== "undefined") {
@@ -733,6 +767,7 @@ const Form: React.FC = () => {
   };
 
   const prevStep = () => {
+    setDirection(-1);
     setStep((prev) => {
       const newStep = prev - 1;
       if (typeof window !== "undefined") {
@@ -751,15 +786,30 @@ const Form: React.FC = () => {
   };
 
   return (
-    <>
-      {step === 1 && <StepOne nextStep={nextStep} progress={progress} />}
+    <AnimatePresence mode="wait" custom={direction}>
+      {step === 1 && (
+        <StepOne
+          nextStep={nextStep}
+          progress={progress}
+          direction={direction}
+        />
+      )}
       {step === 2 && (
-        <StepTwo prevStep={prevStep} nextStep={nextStep} progress={progress} />
+        <StepTwo
+          prevStep={prevStep}
+          nextStep={nextStep}
+          progress={progress}
+          direction={direction}
+        />
       )}
       {step === 3 && (
-        <StepThree progress={progress} handleBookAnother={handleBookAnother} />
+        <StepThree
+          progress={progress}
+          handleBookAnother={handleBookAnother}
+          direction={direction}
+        />
       )}
-    </>
+    </AnimatePresence>
   );
 };
 
